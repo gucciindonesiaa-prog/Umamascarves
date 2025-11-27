@@ -45,6 +45,13 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
               </a>
             </div>
 
+            {/* Center Promo Text (Desktop) */}
+            <div className="hidden md:flex flex-1 justify-center">
+              <a href="#" className="text-red-600 font-bold text-lg tracking-wide hover:opacity-80 transition-opacity">
+                CLAIM HADIAH VOUCHER SEKARANG JUGA
+              </a>
+            </div>
+
             {/* Icons */}
             <div className="flex items-center space-x-4 md:space-x-6">
               <button className="text-gray-500 hover:text-primary transition-colors hidden sm:block">
@@ -77,15 +84,20 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
         {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-lg animate-fade-in-down">
-            <div className="px-4 pt-2 pb-6 space-y-2">
-              <a href="#" className="block px-3 py-3 text-base font-medium text-gray-700 border-b border-gray-50">New Arrival</a>
-              <a href="#" className="block px-3 py-3 text-base font-medium text-gray-700 border-b border-gray-50">Polos</a>
-              <a href="#" className="block px-3 py-3 text-base font-medium text-gray-700 border-b border-gray-50">Motif</a>
-              <a href="#" className="block px-3 py-3 text-base font-medium text-gray-700 border-b border-gray-50">Pakaian</a>
-              <a href="#" className="block px-3 py-3 text-base font-medium text-red-500 font-bold">Sale</a>
-              <div className="pt-4 flex space-x-4 px-3">
-                 <button onClick={handleUserClick} className="text-gray-600 flex items-center gap-2"><User size={18}/> Akun</button>
-                 <button className="text-gray-600 flex items-center gap-2"><Search size={18}/> Cari</button>
+            <div className="px-4 pt-4 pb-6 space-y-4">
+              <a href="#" className="block px-3 py-3 text-center text-lg font-bold text-red-600 bg-red-50 rounded-lg border border-red-100">
+                CLAIM HADIAH VOUCHER SEKARANG JUGA
+              </a>
+              <div className="pt-2 flex justify-center space-x-6 border-t border-gray-50 mt-2">
+                 <button onClick={handleUserClick} className="text-gray-600 flex flex-col items-center gap-1 text-xs">
+                    <User size={20}/> Akun
+                 </button>
+                 <button className="text-gray-600 flex flex-col items-center gap-1 text-xs">
+                    <Search size={20}/> Cari
+                 </button>
+                 <button className="text-gray-600 flex flex-col items-center gap-1 text-xs">
+                    <Heart size={20}/> Wishlist
+                 </button>
               </div>
             </div>
           </div>
