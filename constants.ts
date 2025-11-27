@@ -72,11 +72,3 @@ export const PRODUCTS: Product[] = [
     colors: ['#e6e6fa', '#ffb6c1']
   }
 ];
-
-export const FORMAT_CURRENCY = (amount: number) => {
-  return new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    minimumFractionDigits: 0
-  }).format(amount);
-};
