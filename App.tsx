@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProductCard from './components/ProductCard';
-import { PRODUCTS, FORMAT_CURRENCY } from './constants';
+import { PRODUCTS } from './constants';
 import { Product, CartItem, Category } from './types';
 import { X, Trash2, ArrowRight, ShoppingBag, Instagram, Facebook, Youtube } from 'lucide-react';
 
@@ -30,9 +30,6 @@ function App() {
     setCart(prev => prev.filter(item => item.id !== id));
   };
 
-  // Calculate Total
-  const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
   // Handle Checkout / Claim via WhatsApp
   const handleCheckout = () => {
     const phoneNumber = '6283170566978';
@@ -43,7 +40,8 @@ function App() {
       message += `${item.name} (Qty: ${item.quantity}) - ${priceStr}\n`;
     });
     
-    const url = `http://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    // Use https instead of http for better compatibility
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
 
@@ -154,7 +152,7 @@ function App() {
       {/* Footer */}
       <footer className="bg-[#1a1a1a] text-white pt-16 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
              <div className="col-span-1 md:col-span-1">
                <h3 className="text-2xl font-serif font-bold mb-6">UMAMA</h3>
                <p className="text-gray-400 text-sm leading-relaxed mb-6">
@@ -167,16 +165,6 @@ function App() {
                </div>
              </div>
              
-             <div>
-               <h4 className="text-sm font-bold uppercase tracking-wider mb-6 text-gray-200">Belanja</h4>
-               <ul className="space-y-3 text-sm text-gray-400">
-                 <li><a href="#" className="hover:text-white transition-colors">New Arrival</a></li>
-                 <li><a href="#" className="hover:text-white transition-colors">Polos</a></li>
-                 <li><a href="#" className="hover:text-white transition-colors">Motif</a></li>
-                 <li><a href="#" className="hover:text-white transition-colors">Aksesoris</a></li>
-               </ul>
-             </div>
-
              <div>
                <h4 className="text-sm font-bold uppercase tracking-wider mb-6 text-gray-200">Bantuan</h4>
                <ul className="space-y-3 text-sm text-gray-400">

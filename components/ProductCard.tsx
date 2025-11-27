@@ -1,6 +1,5 @@
 import React from 'react';
 import { Plus, Heart } from 'lucide-react';
-import { FORMAT_CURRENCY } from '../constants';
 import { Product } from '../types';
 
 interface ProductCardProps {
