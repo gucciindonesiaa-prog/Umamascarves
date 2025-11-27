@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProductCard from './components/ProductCard';
-import AIStylist from './components/AIStylist';
 import { PRODUCTS, FORMAT_CURRENCY } from './constants';
 import { Product, CartItem, Category } from './types';
 import { X, Trash2, ArrowRight, ShoppingBag, Instagram, Facebook, Youtube } from 'lucide-react';
@@ -311,9 +310,6 @@ function App() {
           </div>
         </div>
       )}
-
-      {/* AI Stylist Chatbot */}
-      <AIStylist />
     </div>
   );
 }
