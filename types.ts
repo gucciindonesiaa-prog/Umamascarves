@@ -13,15 +13,15 @@ export interface CartItem extends Product {
   quantity: number;
 }
 
-export interface ChatMessage {
-  role: 'user' | 'model';
-  text: string;
-  timestamp: Date;
-}
-
 export enum Category {
   PLAIN_SCARF = 'Polos',
   MOTIF_SCARF = 'Motif',
   APPAREL = 'Pakaian',
   ACCESSORIES = 'Aksesoris'
+}
+
+export interface ChatMessage {
+  role: 'user' | 'model';
+  text: string;
+  timestamp: Date;
 }

@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
             <div className="flex items-center md:hidden">
               <button 
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-600 hover:text-primary p-2"
+                className="text-gray-600 hover:text-primary p-2 pointer-events-none"
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -40,35 +40,43 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
 
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center justify-center flex-1 md:flex-none md:justify-start">
-              <a href="#" className="font-serif text-3xl font-bold tracking-tighter text-primary">
+              <a href="#" className="font-serif text-3xl font-bold tracking-tighter text-primary pointer-events-auto">
                 UMAMA
+              </a>
+              <a href="#" className="ml-4 text-xs font-bold bg-gray-100 px-2 py-1 rounded hover:bg-gray-200 transition-colors pointer-events-auto">
+                HOME
               </a>
             </div>
 
             {/* Center Promo Text (Desktop) */}
             <div className="hidden md:flex flex-1 justify-center">
-              <a href="#" className="text-red-600 font-bold text-lg tracking-wide hover:opacity-80 transition-opacity">
+              <button 
+                onClick={handleWhatsAppClick}
+                className="text-red-600 font-bold text-lg tracking-wide hover:opacity-80 transition-opacity pointer-events-auto"
+              >
                 CLAIM HADIAH VOUCHER SEKARANG JUGA
-              </a>
+              </button>
             </div>
 
             {/* Icons */}
             <div className="flex items-center space-x-4 md:space-x-6">
-              <button className="text-gray-500 hover:text-primary transition-colors hidden sm:block">
+              <button className="text-gray-500 hover:text-primary transition-colors hidden sm:block pointer-events-none">
                 <Search size={20} />
               </button>
-              <button className="text-gray-500 hover:text-primary transition-colors hidden sm:block">
+              <button 
+                className="text-gray-500 hover:text-primary transition-colors hidden sm:block pointer-events-none"
+              >
                 <Heart size={20} />
               </button>
               <button 
                 onClick={handleUserClick}
-                className="text-gray-500 hover:text-primary transition-colors hidden sm:block"
+                className="text-gray-500 hover:text-primary transition-colors hidden sm:block pointer-events-none"
               >
                 <User size={20} />
               </button>
               <button 
                 onClick={onCartClick}
-                className="text-gray-500 hover:text-primary transition-colors relative"
+                className="text-gray-500 hover:text-primary transition-colors relative pointer-events-none"
               >
                 <ShoppingBag size={20} />
                 {cartCount > 0 && (
@@ -85,17 +93,22 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-lg animate-fade-in-down">
             <div className="px-4 pt-4 pb-6 space-y-4">
-              <a href="#" className="block px-3 py-3 text-center text-lg font-bold text-red-600 bg-red-50 rounded-lg border border-red-100">
+              <button 
+                onClick={handleWhatsAppClick}
+                className="block w-full px-3 py-3 text-center text-lg font-bold text-red-600 bg-red-50 rounded-lg border border-red-100 pointer-events-auto"
+              >
                 CLAIM HADIAH VOUCHER SEKARANG JUGA
-              </a>
+              </button>
               <div className="pt-2 flex justify-center space-x-6 border-t border-gray-50 mt-2">
-                 <button onClick={handleUserClick} className="text-gray-600 flex flex-col items-center gap-1 text-xs">
+                 <button onClick={handleUserClick} className="text-gray-600 flex flex-col items-center gap-1 text-xs pointer-events-none">
                     <User size={20}/> Akun
                  </button>
-                 <button className="text-gray-600 flex flex-col items-center gap-1 text-xs">
+                 <button className="text-gray-600 flex flex-col items-center gap-1 text-xs pointer-events-none">
                     <Search size={20}/> Cari
                  </button>
-                 <button className="text-gray-600 flex flex-col items-center gap-1 text-xs">
+                 <button 
+                   className="text-gray-600 flex flex-col items-center gap-1 text-xs pointer-events-none"
+                 >
                     <Heart size={20}/> Wishlist
                  </button>
               </div>

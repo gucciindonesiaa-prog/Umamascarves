@@ -4,7 +4,7 @@ import Hero from './components/Hero';
 import ProductCard from './components/ProductCard';
 import { PRODUCTS } from './constants';
 import { Product, CartItem, Category } from './types';
-import { X, Trash2, ArrowRight, ShoppingBag, Instagram, Facebook, Youtube } from 'lucide-react';
+import { X, Trash2, ArrowRight, ShoppingBag, Instagram, Facebook, Youtube, Heart, MessageCircle, Send, Bookmark, MoreHorizontal } from 'lucide-react';
 
 function App() {
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -68,7 +68,7 @@ function App() {
                  <p className="text-gray-500 max-w-2xl mx-auto">Temukan gaya terbaik Anda melalui koleksi kategori kami yang telah dikurasi dengan cermat untuk setiap kesempatan.</p>
               </div>
               
-              <div className="flex justify-center flex-wrap gap-4 mb-10">
+              <div className="flex justify-center flex-wrap gap-4 mb-10 pointer-events-none">
                 {categories.map(cat => (
                   <button
                     key={cat}
@@ -147,10 +147,101 @@ function App() {
           </div>
         </section>
 
+        {/* Instagram Feed Section */}
+        <section className="py-16 bg-[#e8e2da] pointer-events-none">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-center items-center gap-6 overflow-hidden">
+               {/* Feed Item 1 */}
+               <div className="bg-white rounded-lg shadow-md max-w-[300px] w-full shrink-0">
+                  <div className="p-3 flex items-center justify-between border-b border-gray-100">
+                     <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
+                           <img src="https://www.umamascarves.co.id/wp-content/uploads/2024/04/Cover-4-8-300x300.jpg" alt="profile" className="w-full h-full object-cover" />
+                        </div>
+                        <span className="text-xs font-semibold">umamascarves</span>
+                     </div>
+                     <MoreHorizontal size={16} className="text-gray-500" />
+                  </div>
+                  <div className="aspect-square bg-gray-100">
+                     <img src="https://www.umamascarves.co.id/wp-content/uploads/2025/04/ginee_20241120091038258_2951882380-1-300x300.jpeg" alt="feed" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="p-3">
+                     <div className="flex justify-between mb-2">
+                        <div className="flex gap-3">
+                           <Heart size={20} className="text-gray-700" />
+                           <MessageCircle size={20} className="text-gray-700" />
+                           <Send size={20} className="text-gray-700" />
+                        </div>
+                        <Bookmark size={20} className="text-gray-700" />
+                     </div>
+                     <p className="text-xs font-semibold mb-1">1,234 likes</p>
+                     <p className="text-xs text-gray-600"><span className="font-semibold text-gray-900">umamascarves</span> Koleksi terbaru sudah tersedia!</p>
+                  </div>
+               </div>
+
+               {/* Feed Item 2 */}
+               <div className="bg-white rounded-lg shadow-md max-w-[300px] w-full shrink-0 hidden md:block">
+                  <div className="p-3 flex items-center justify-between border-b border-gray-100">
+                     <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
+                           <img src="https://www.umamascarves.co.id/wp-content/uploads/2024/04/Cover-4-8-300x300.jpg" alt="profile" className="w-full h-full object-cover" />
+                        </div>
+                        <span className="text-xs font-semibold">umamascarves</span>
+                     </div>
+                     <MoreHorizontal size={16} className="text-gray-500" />
+                  </div>
+                  <div className="aspect-square bg-gray-100">
+                     <img src="https://www.umamascarves.co.id/wp-content/uploads/2024/04/cover-summer-08-300x300.jpg" alt="feed" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="p-3">
+                     <div className="flex justify-between mb-2">
+                        <div className="flex gap-3">
+                           <Heart size={20} className="text-gray-700" />
+                           <MessageCircle size={20} className="text-gray-700" />
+                           <Send size={20} className="text-gray-700" />
+                        </div>
+                        <Bookmark size={20} className="text-gray-700" />
+                     </div>
+                     <p className="text-xs font-semibold mb-1">2,845 likes</p>
+                     <p className="text-xs text-gray-600"><span className="font-semibold text-gray-900">umamascarves</span> Summer collection is here ✨</p>
+                  </div>
+               </div>
+
+               {/* Feed Item 3 */}
+               <div className="bg-white rounded-lg shadow-md max-w-[300px] w-full shrink-0 hidden lg:block">
+                  <div className="p-3 flex items-center justify-between border-b border-gray-100">
+                     <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
+                           <img src="https://www.umamascarves.co.id/wp-content/uploads/2024/04/Cover-4-8-300x300.jpg" alt="profile" className="w-full h-full object-cover" />
+                        </div>
+                        <span className="text-xs font-semibold">umamascarves</span>
+                     </div>
+                     <MoreHorizontal size={16} className="text-gray-500" />
+                  </div>
+                  <div className="aspect-square bg-gray-100">
+                     <img src="https://www.umamascarves.co.id/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-07-at-15.33.55-300x300.jpeg" alt="feed" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="p-3">
+                     <div className="flex justify-between mb-2">
+                        <div className="flex gap-3">
+                           <Heart size={20} className="text-gray-700" />
+                           <MessageCircle size={20} className="text-gray-700" />
+                           <Send size={20} className="text-gray-700" />
+                        </div>
+                        <Bookmark size={20} className="text-gray-700" />
+                     </div>
+                     <p className="text-xs font-semibold mb-1">3,120 likes</p>
+                     <p className="text-xs text-gray-600"><span className="font-semibold text-gray-900">umamascarves</span> Tampil elegan setiap saat.</p>
+                  </div>
+               </div>
+            </div>
+          </div>
+        </section>
+
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#1a1a1a] text-white pt-16 pb-8">
+      <footer className="bg-[#1a1a1a] text-white pt-16 pb-8 pointer-events-none">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
              <div className="col-span-1 md:col-span-1">
