@@ -61,19 +61,19 @@ function App() {
         <Hero />
 
         {/* Categories Section */}
-        <section className="py-16 bg-white">
+        <section className="py-10 md:py-16 bg-white">
            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-12">
-                 <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">Kategori Pilihan</h2>
-                 <p className="text-gray-500 max-w-2xl mx-auto">Temukan gaya terbaik Anda melalui koleksi kategori kami yang telah dikurasi dengan cermat untuk setiap kesempatan.</p>
+              <div className="text-center mb-8 md:mb-12">
+                 <h2 className="text-2xl md:text-3xl font-serif font-bold text-gray-900 mb-3 md:mb-4">Kategori Pilihan</h2>
+                 <p className="text-sm md:text-base text-gray-500 max-w-2xl mx-auto">Temukan gaya terbaik Anda melalui koleksi kategori kami yang telah dikurasi dengan cermat untuk setiap kesempatan.</p>
               </div>
               
-              <div className="flex justify-center flex-wrap gap-4 mb-10 pointer-events-none">
+              <div className="flex justify-center flex-wrap gap-2 md:gap-4 mb-8 md:mb-10 pointer-events-none">
                 {categories.map(cat => (
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    className={`px-4 py-1.5 md:px-6 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-200 ${
                       activeCategory === cat 
                         ? 'bg-secondary text-white shadow-md' 
                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -85,7 +85,7 @@ function App() {
               </div>
 
               {/* Product Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-6 md:gap-x-6 md:gap-y-10">
                 {filteredProducts.map(product => (
                   <ProductCard key={product.id} product={product} onAddToCart={addToCart} />
                 ))}
@@ -94,21 +94,21 @@ function App() {
         </section>
 
         {/* Product Highlights Section (New) */}
-        <section className="py-20 bg-[#f9f7f5]">
+        <section className="py-12 md:py-20 bg-[#f9f7f5]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-serif font-bold text-center mb-16 text-gray-900">Produk Umama Scarves</h2>
+            <h2 className="text-2xl md:text-3xl font-serif font-bold text-center mb-10 md:mb-16 text-gray-900">Produk Umama Scarves</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
               {/* Card 1: Jacquard Voile */}
               <div className="flex flex-col items-center text-center">
-                 <div className="w-full max-w-[300px] aspect-[4/5] rounded-t-[150px] overflow-hidden mb-6 relative shadow-lg bg-white">
+                 <div className="w-full max-w-[300px] aspect-[4/5] rounded-t-[100px] md:rounded-t-[150px] overflow-hidden mb-4 md:mb-6 relative shadow-lg bg-white mx-auto">
                     <img 
                       src="https://www.umamascarves.co.id/wp-content/uploads/2024/07/ummama-rev-1.png" 
                       alt="Jacquard Voile" 
                       className="w-full h-full object-cover" 
                     />
                  </div>
-                 <h3 className="text-lg font-bold mb-3 font-serif">Jacquard Voile</h3>
+                 <h3 className="text-lg font-bold mb-2 md:mb-3 font-serif">Jacquard Voile</h3>
                  <p className="text-xs text-gray-500 leading-relaxed px-2 max-w-sm">
                    Jacquard Voile dibuat dengan pola timbul, menambah keanggunan pada pakaian Anda. Setiap pembelian akan disertakan dengan box yang sesuai dengan warna hijab, termasuk Premium Signature Brooch dan Thank You Card.
                  </p>
@@ -116,14 +116,14 @@ function App() {
 
               {/* Card 2: Digital Scarf */}
               <div className="flex flex-col items-center text-center">
-                 <div className="w-full max-w-[300px] aspect-[4/5] rounded-t-[150px] overflow-hidden mb-6 relative shadow-lg bg-white">
+                 <div className="w-full max-w-[300px] aspect-[4/5] rounded-t-[100px] md:rounded-t-[150px] overflow-hidden mb-4 md:mb-6 relative shadow-lg bg-white mx-auto">
                     <img 
                       src="https://www.umamascarves.co.id/wp-content/uploads/2024/07/ummama-rev-3.png" 
                       alt="Digital Scarf" 
                       className="w-full h-full object-cover" 
                     />
                  </div>
-                 <h3 className="text-lg font-bold mb-3 font-serif">Digital Scarf</h3>
+                 <h3 className="text-lg font-bold mb-2 md:mb-3 font-serif">Digital Scarf</h3>
                  <p className="text-xs text-gray-500 leading-relaxed px-2 max-w-sm">
                    Digital scarf premium mengacu pada koleksi hijab kelas atas yang dapat memberikan warna-warna cerah dan detail yang tepat, menghasilkan pola yang akan menarik perhatian. Setiap pembelian akan disertakan dengan box yang sesuai dengan warna dan motif hijab, Premium Signature Brooch dan Thank You Card.
                  </p>
@@ -131,14 +131,14 @@ function App() {
 
               {/* Card 3: Paris Original Posh Syar'i */}
               <div className="flex flex-col items-center text-center">
-                 <div className="w-full max-w-[300px] aspect-[4/5] rounded-t-[150px] overflow-hidden mb-6 relative shadow-lg bg-white">
+                 <div className="w-full max-w-[300px] aspect-[4/5] rounded-t-[100px] md:rounded-t-[150px] overflow-hidden mb-4 md:mb-6 relative shadow-lg bg-white mx-auto">
                     <img 
                       src="https://www.umamascarves.co.id/wp-content/uploads/2024/07/ummama-rev-2.png" 
                       alt="Paris Original Posh Syar'i" 
                       className="w-full h-full object-cover" 
                     />
                  </div>
-                 <h3 className="text-lg font-bold mb-3 font-serif">Paris Original Posh Syar'i</h3>
+                 <h3 className="text-lg font-bold mb-2 md:mb-3 font-serif">Paris Original Posh Syar'i</h3>
                  <p className="text-xs text-gray-500 leading-relaxed px-2 max-w-sm">
                    Pilihan hijab syar'i untuk mengekspresikan gaya pribadi Anda dengan tetap mengikuti pedoman berpakaian yang sopan.
                  </p>
@@ -148,11 +148,12 @@ function App() {
         </section>
 
         {/* Instagram Feed Section */}
-        <section className="py-16 bg-[#e8e2da] pointer-events-none">
+        <section className="py-12 md:py-16 bg-[#e8e2da] pointer-events-none">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-center items-center gap-6 overflow-hidden">
+            {/* Mobile: Stack vertically, Desktop: Horizontal row */}
+            <div className="flex flex-col md:flex-row justify-center items-center gap-6 overflow-hidden">
                {/* Feed Item 1 */}
-               <div className="bg-white rounded-lg shadow-md max-w-[300px] w-full shrink-0">
+               <div className="bg-white rounded-lg shadow-md max-w-[320px] w-full shrink-0">
                   <div className="p-3 flex items-center justify-between border-b border-gray-100">
                      <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
@@ -180,7 +181,7 @@ function App() {
                </div>
 
                {/* Feed Item 2 */}
-               <div className="bg-white rounded-lg shadow-md max-w-[300px] w-full shrink-0 hidden md:block">
+               <div className="bg-white rounded-lg shadow-md max-w-[320px] w-full shrink-0">
                   <div className="p-3 flex items-center justify-between border-b border-gray-100">
                      <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
@@ -208,7 +209,7 @@ function App() {
                </div>
 
                {/* Feed Item 3 */}
-               <div className="bg-white rounded-lg shadow-md max-w-[300px] w-full shrink-0 hidden lg:block">
+               <div className="bg-white rounded-lg shadow-md max-w-[320px] w-full shrink-0">
                   <div className="p-3 flex items-center justify-between border-b border-gray-100">
                      <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
@@ -241,23 +242,23 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#1a1a1a] text-white pt-16 pb-8 pointer-events-none">
+      <footer className="bg-[#1a1a1a] text-white pt-10 pb-8 md:pt-16 pointer-events-none">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-             <div className="col-span-1 md:col-span-1">
-               <h3 className="text-2xl font-serif font-bold mb-6">UMAMA</h3>
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-8 md:mb-12">
+             <div className="col-span-1 md:col-span-1 text-center md:text-left">
+               <h3 className="text-2xl font-serif font-bold mb-4 md:mb-6">UMAMA</h3>
                <p className="text-gray-400 text-sm leading-relaxed mb-6">
                  Menghadirkan keindahan dan kenyamanan dalam setiap helai hijab untuk wanita Indonesia yang elegan dan percaya diri.
                </p>
-               <div className="flex space-x-4">
+               <div className="flex justify-center md:justify-start space-x-4">
                  <a href="#" className="text-gray-400 hover:text-white transition-colors"><Instagram size={20} /></a>
                  <a href="#" className="text-gray-400 hover:text-white transition-colors"><Facebook size={20} /></a>
                  <a href="#" className="text-gray-400 hover:text-white transition-colors"><Youtube size={20} /></a>
                </div>
              </div>
              
-             <div>
-               <h4 className="text-sm font-bold uppercase tracking-wider mb-6 text-gray-200">Bantuan</h4>
+             <div className="text-center md:text-left">
+               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 md:mb-6 text-gray-200">Bantuan</h4>
                <ul className="space-y-3 text-sm text-gray-400">
                  <li><a href="#" className="hover:text-white transition-colors">Konfirmasi Pembayaran</a></li>
                  <li><a href="#" className="hover:text-white transition-colors">Panduan Ukuran</a></li>
@@ -266,8 +267,8 @@ function App() {
                </ul>
              </div>
 
-             <div>
-               <h4 className="text-sm font-bold uppercase tracking-wider mb-6 text-gray-200">Newsletter</h4>
+             <div className="text-center md:text-left">
+               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 md:mb-6 text-gray-200">Newsletter</h4>
                <p className="text-gray-400 text-sm mb-4">Dapatkan info terbaru tentang produk dan promo spesial.</p>
                <div className="flex">
                  <input type="email" placeholder="Email Anda" className="bg-[#333] border-none text-white text-sm px-4 py-2 w-full focus:ring-1 focus:ring-secondary outline-none" />

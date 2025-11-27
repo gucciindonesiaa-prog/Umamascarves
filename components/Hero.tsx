@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden bg-gray-100 group">
+    <div className="relative w-full h-[250px] sm:h-[400px] md:h-[600px] overflow-hidden bg-gray-100 group pointer-events-none">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -66,13 +66,13 @@ const Hero: React.FC = () => {
       </button>
 
       {/* Indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+      <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-2.5 h-2.5 rounded-full transition-all ${
-              index === currentSlide ? 'bg-white w-8' : 'bg-white/50 hover:bg-white/80'
+            className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition-all ${
+              index === currentSlide ? 'bg-white w-6 md:w-8' : 'bg-white/50 hover:bg-white/80'
             }`}
           />
         ))}
