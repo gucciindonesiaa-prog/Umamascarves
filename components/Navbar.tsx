@@ -43,9 +43,6 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
               <a href="#" className="font-serif text-3xl font-bold tracking-tighter text-primary pointer-events-auto">
                 UMAMA
               </a>
-              <a href="#" className="ml-4 text-xs font-bold bg-gray-100 px-2 py-1 rounded hover:bg-gray-200 transition-colors pointer-events-auto">
-                HOME
-              </a>
             </div>
 
             {/* Center Promo Text (Desktop) */}

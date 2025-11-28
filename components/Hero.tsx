@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const slides = [
   {
@@ -15,7 +15,7 @@ const slides = [
   {
     id: 3,
     image: "https://www.umamascarves.co.id/wp-content/uploads/2024/07/banner-umamascarves-new-2.jpg",
-    content: null // No overlay text for this slide
+    content: null
   }
 ];
 
@@ -30,8 +30,19 @@ const Hero: React.FC = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
+  // Auto-slide effect (3 seconds)
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      nextSlide();
+    }, 3000);
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(slideInterval);
+  }, []);
+
   return (
-    <div className="relative w-full h-[250px] sm:h-[400px] md:h-[600px] overflow-hidden bg-gray-100 group pointer-events-none">
+    // Changed bg-gray-100 to bg-white so any letterboxing from object-contain blends in
+    <div className="relative w-full h-[220px] sm:h-[400px] md:h-[600px] overflow-hidden bg-white group pointer-events-none">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -43,7 +54,9 @@ const Hero: React.FC = () => {
           <img 
             src={slide.image} 
             alt={`Slide ${slide.id}`} 
-            className="w-full h-full object-cover object-center"
+            // Changed object-cover to object-contain for mobile to prevent cropping text
+            // Kept object-cover for desktop (md:object-cover) as screens are wider
+            className="w-full h-full object-contain md:object-cover object-center"
           />
           
           {/* Content Overlay */}
@@ -51,28 +64,28 @@ const Hero: React.FC = () => {
         </div>
       ))}
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - Hidden on Mobile for cleaner look, Visible on Desktop */}
       <button 
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white text-white hover:text-primary p-2 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10"
+        className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white text-white hover:text-primary p-2 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10"
       >
         <ChevronLeft size={24} />
       </button>
       <button 
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white text-white hover:text-primary p-2 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10"
+        className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white text-white hover:text-primary p-2 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10"
       >
         <ChevronRight size={24} />
       </button>
 
-      {/* Indicators */}
-      <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+      {/* Indicators - Changed color to be visible on white background */}
+      <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition-all ${
-              index === currentSlide ? 'bg-white w-6 md:w-8' : 'bg-white/50 hover:bg-white/80'
+            className={`w-1.5 h-1.5 md:w-2.5 md:h-2.5 rounded-full transition-all ${
+              index === currentSlide ? 'bg-secondary w-4 md:w-8' : 'bg-gray-300'
             }`}
           />
         ))}
