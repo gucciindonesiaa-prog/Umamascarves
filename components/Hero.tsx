@@ -41,45 +41,39 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    // Changed bg-gray-100 to bg-white so any letterboxing from object-contain blends in
-    <div className="relative w-full h-[220px] sm:h-[400px] md:h-[600px] overflow-hidden bg-white group pointer-events-none">
-      {/* Slides */}
+    <div className="relative w-full h-[220px] sm:h-[400px] md:h-[600px] overflow-hidden bg-white group">
+      {/* Slides Container */}
       {slides.map((slide, index) => (
         <div
           key={slide.id}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out pointer-events-none ${
             index === currentSlide ? 'opacity-100' : 'opacity-0'
           }`}
         >
           <img 
             src={slide.image} 
             alt={`Slide ${slide.id}`} 
-            // Changed object-cover to object-contain for mobile to prevent cropping text
-            // Kept object-cover for desktop (md:object-cover) as screens are wider
             className="w-full h-full object-contain md:object-cover object-center"
           />
-          
-          {/* Content Overlay */}
-          {slide.content}
         </div>
       ))}
 
-      {/* Navigation Arrows - Hidden on Mobile for cleaner look, Visible on Desktop */}
+      {/* Navigation Arrows - Hidden on Mobile */}
       <button 
         onClick={prevSlide}
-        className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white text-white hover:text-primary p-2 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10"
+        className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white text-white hover:text-primary p-2 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10 pointer-events-auto"
       >
         <ChevronLeft size={24} />
       </button>
       <button 
         onClick={nextSlide}
-        className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white text-white hover:text-primary p-2 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10"
+        className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white text-white hover:text-primary p-2 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10 pointer-events-auto"
       >
         <ChevronRight size={24} />
       </button>
 
-      {/* Indicators - Changed color to be visible on white background */}
-      <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+      {/* Indicators */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 z-10 pointer-events-auto">
         {slides.map((_, index) => (
           <button
             key={index}

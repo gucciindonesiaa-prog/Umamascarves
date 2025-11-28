@@ -32,7 +32,7 @@ function App() {
 
   // Handle Checkout / Claim via WhatsApp
   const handleCheckout = () => {
-    const phoneNumber = '6283170566978';
+    const phoneNumber = '6281337672046';
     
     let message = "Halo, saya ingin klaim pesanan ini:\n\n";
     cart.forEach(item => {
@@ -41,7 +41,7 @@ function App() {
     });
     
     // Use https instead of http for better compatibility
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/${6281337672046}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
 
