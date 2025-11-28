@@ -175,8 +175,8 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             
-            {/* Mobile Menu Button - Fixed for better touch area and z-index */}
-            <div className="flex items-center md:hidden relative z-50">
+            {/* Mobile Menu Button - Visible on all screens now */}
+            <div className="flex items-center relative z-50 mr-4">
               <button 
                 onClick={() => setIsMenuOpen(true)}
                 className="text-gray-600 hover:text-primary p-4 pointer-events-auto"
