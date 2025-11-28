@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Search, Menu, X, User, Heart, MessageCircle, ChevronDown, Video, Store, Instagram, MapPin } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X, User, Heart, MessageCircle, ChevronDown, Video, Store, Instagram, MapPin, Mail, Phone, Send } from 'lucide-react';
 
 interface NavbarProps {
   cartCount: number;
@@ -137,6 +137,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
   const [isAboutSubmenuOpen, setIsAboutSubmenuOpen] = useState(false);
   const [isOnlineStoreOpen, setIsOnlineStoreOpen] = useState(false);
   const [isOfflineStoreOpen, setIsOfflineStoreOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
   
   // Notification State for Online Store
   const [showPromoNotification, setShowPromoNotification] = useState(false);
@@ -317,9 +318,15 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
 
                 <div className="h-px bg-gray-100 w-full"></div>
                 
-                <a href="#" className="text-xl font-bold text-gray-800 hover:text-secondary tracking-wide pointer-events-none">
+                <button 
+                  onClick={() => {
+                    setIsContactOpen(true);
+                    setIsMenuOpen(false);
+                  }}
+                  className="text-left text-xl font-bold text-gray-800 hover:text-secondary tracking-wide pointer-events-auto"
+                >
                   CONTACT US
-                </a>
+                </button>
                 <div className="h-px bg-gray-100 w-full"></div>
 
                 <a href="#" className="text-xl font-bold text-gray-800 hover:text-secondary tracking-wide pointer-events-none">
@@ -442,7 +449,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
                           <MessageCircle size={32} />
                           <div className="text-left">
                               <span className="font-bold text-lg block">WhatsApp</span>
-                              <span className="text-xs opacity-90 block">+62 811-1200-0093</span>
+                              <span className="text-xs opacity-90 block">+62 823-1543-7848</span>
                           </div>
                       </div>
                       <span className="bg-white text-[#25D366] px-4 py-2 rounded-full text-xs font-bold group-hover:scale-105 transition-transform">SHOP NOW</span>
@@ -536,6 +543,114 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
                    ))}
                 </div>
               </div>
+          </div>
+        </div>
+      )}
+
+      {/* Contact Us Modal */}
+      {isContactOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          {/* Overlay */}
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setIsContactOpen(false)}
+          ></div>
+
+          <div className="bg-white w-full max-w-5xl overflow-y-auto max-h-[95vh] rounded-xl shadow-2xl relative z-10 animate-fade-in-up">
+             {/* Close Button */}
+             <button 
+                onClick={() => setIsContactOpen(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-2 z-20"
+              >
+                <X size={24} />
+              </button>
+
+             <div className="flex flex-col md:flex-row">
+                {/* Left Column: Contact Info */}
+                <div className="w-full md:w-5/12 p-8 md:p-12">
+                   <h2 className="text-3xl font-serif font-bold text-gray-900 mb-2">Contact</h2>
+                   <div className="w-10 h-0.5 bg-black mb-6"></div>
+                   
+                   <p className="text-gray-600 text-sm mb-8">Untuk informasi lebih lanjut, silakan menghubungi:</p>
+
+                   <div className="space-y-4 mb-10">
+                      <div className="flex items-center gap-4">
+                         <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600">
+                            <Phone size={18} />
+                         </div>
+                         <div>
+                            <p className="text-xs text-gray-500">Whatsapp</p>
+                            <p className="text-sm font-medium text-gray-800">+62 823-1543-7848</p>
+                         </div>
+                      </div>
+                      <div className="flex items-center gap-4">
+                         <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600">
+                            <Mail size={18} />
+                         </div>
+                         <div>
+                            <p className="text-sm font-medium text-gray-800">marketing@umamascarves.co</p>
+                         </div>
+                      </div>
+                   </div>
+
+                   <h3 className="font-bold text-gray-900 mb-4">Follow us</h3>
+                   <div className="flex gap-2 mb-10">
+                      <div className="w-8 h-8 bg-[#EE4D2D] rounded text-white flex items-center justify-center cursor-pointer hover:opacity-80">
+                         <ShoppingBag size={16} />
+                      </div>
+                      <div className="w-8 h-8 bg-[#42b549] rounded text-white flex items-center justify-center cursor-pointer hover:opacity-80">
+                         <ShoppingBag size={16} />
+                      </div>
+                      <div className="w-8 h-8 bg-[#0f146d] rounded text-white flex items-center justify-center cursor-pointer hover:opacity-80">
+                         <Store size={16} />
+                      </div>
+                      <div className="w-8 h-8 bg-black rounded text-white flex items-center justify-center cursor-pointer hover:opacity-80">
+                         <Video size={16} />
+                      </div>
+                      <div className="w-8 h-8 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 rounded text-white flex items-center justify-center cursor-pointer hover:opacity-80">
+                         <Instagram size={16} />
+                      </div>
+                      <div className="w-8 h-8 bg-[#25D366] rounded text-white flex items-center justify-center cursor-pointer hover:opacity-80">
+                         <MessageCircle size={16} />
+                      </div>
+                   </div>
+
+                   <h3 className="font-bold text-gray-900 mb-2">Address</h3>
+                   <p className="text-sm text-gray-600 leading-relaxed max-w-xs">
+                      Ruko Blok F3, No.9 Agropek, Tanah Abang DKI Jakarta Pusat, Indonesia 10240
+                   </p>
+                </div>
+
+                {/* Right Column: Form */}
+                <div className="w-full md:w-7/12 border-l border-gray-100 p-8 md:p-12">
+                   <h2 className="text-xl font-sans text-gray-800 mb-8">Send your message</h2>
+                   
+                   <form className="space-y-6">
+                      <div>
+                         <label htmlFor="name" className="block text-xs text-gray-500 mb-1">Name</label>
+                         <input type="text" id="name" className="w-full border-b border-gray-200 py-2 focus:border-black outline-none transition-colors" />
+                      </div>
+                      <div>
+                         <label htmlFor="email" className="block text-xs text-gray-500 mb-1">E-mail</label>
+                         <input type="email" id="email" className="w-full border-b border-gray-200 py-2 focus:border-black outline-none transition-colors" />
+                      </div>
+                      <div>
+                         <label htmlFor="phone" className="block text-xs text-gray-500 mb-1">Phone Number</label>
+                         <input type="tel" id="phone" className="w-full border-b border-gray-200 py-2 focus:border-black outline-none transition-colors" />
+                      </div>
+                      <div>
+                         <label htmlFor="message" className="block text-xs text-gray-500 mb-1">Message</label>
+                         <textarea id="message" rows={4} className="w-full border-b border-gray-200 py-2 focus:border-black outline-none transition-colors resize-none"></textarea>
+                      </div>
+
+                      <div className="pt-4">
+                         <button type="button" className="border border-gray-300 px-8 py-2 rounded text-sm text-gray-600 hover:bg-black hover:text-white transition-all">
+                            Send
+                         </button>
+                      </div>
+                   </form>
+                </div>
+             </div>
           </div>
         </div>
       )}
